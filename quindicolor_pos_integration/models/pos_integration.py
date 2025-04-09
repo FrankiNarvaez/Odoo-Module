@@ -1,7 +1,9 @@
-from odoo import models, fields, api
+from odoo import models, fields
 
-class StockWarehouse(models.Model):
-    _inherit = 'stock.warehouse'
+class PosConfig(models.Model):
+    _inherit = 'pos.config'
 
-    # Añadir campo para priorizar tiendas físicas
-    pos_priority = fields.Integer(string="Prioridad en PoS", default=1)
+    available_stock_threshold = fields.Integer(
+        string="Available Stock Threshold",
+        help="Threshold for available stock in POS."
+    )

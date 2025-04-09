@@ -20,7 +20,7 @@
         <field name="name">customer.turn.tree</field>
         <field name="model">customer.turn</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree string="Turnos">
                 <field name="name"/>
                 <field name="customer_name"/>
                 <field name="status"/>
@@ -37,7 +37,7 @@
         <field name="name">customer.turn.form</field>
         <field name="model">customer.turn</field>
         <field name="arch" type="xml">
-            <form>
+            <form string="Turno">
                 <sheet>
                     <group>
                         <field name="name"/>

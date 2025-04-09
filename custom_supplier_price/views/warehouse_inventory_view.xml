@@ -1,0 +1,23 @@
+<odoo>
+  <record id="view_inventory_by_warehouse_tree" model="ir.ui.view">
+    <field name="name">inventory.by.warehouse.tree</field>
+    <field name="model">custom.inventory.by.warehouse</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="product_id"/>
+        <field name="location_id"/>
+        <field name="quantity"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="action_inventory_by_warehouse" model="ir.actions.act_window">
+    <field name="name">Inventario por Bodega</field>
+    <field name="res_model">custom.inventory.by.warehouse</field>
+    <field name="view_mode">tree</field>
+  </record>
+
+  <menuitem id="menu_inventory_by_warehouse_root" name="Inventario por Bodega"
+            parent="stock.menu_stock_root"
+            action="action_inventory_by_warehouse"/>
+</odoo>

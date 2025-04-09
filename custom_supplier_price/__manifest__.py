@@ -9,7 +9,7 @@ los precios de compra de los proveedores, generando notificaciones en los produc
     'category': 'Purchases',
     'author': 'Tu Nombre o Empresa',
     'website': 'https://tusitio.com',
-    'depends': ['purchase', 'product'],
+    'depends': ['purchase', 'product', 'stock'],
     'data': [],
     'installable': True,
     'application': False,

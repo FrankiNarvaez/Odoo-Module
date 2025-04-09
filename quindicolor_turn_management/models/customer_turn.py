@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import models, fields
 
 class CustomerTurn(models.Model):
     _name = 'customer.turn'
@@ -14,13 +14,11 @@ class CustomerTurn(models.Model):
     assigned_employee = fields.Many2one('hr.employee', string='Empleado Asignado')
     start_time = fields.Datetime(string='Hora de Inicio')
     end_time = fields.Datetime(string='Hora de Finalización')
+    duration = fields.Float(string='Duración (minutos)', compute='_compute_duration', store=True)
 
-    @api.depends('start_time', 'end_time')
     def _compute_duration(self):
         for record in self:
             if record.start_time and record.end_time:
                 record.duration = (record.end_time - record.start_time).total_seconds() / 60.0
             else:
                 record.duration = 0.0
-
-    duration = fields.Float(string='Duración (minutos)', compute='_compute_duration', store=True)

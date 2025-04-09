@@ -8,10 +8,20 @@ odoo.define('quindicolor_pos_integration.PosStockSync', function (require) {
         async onClick() {
             if (this.env.pos.syncStockFromServer) {
                 await this.env.pos.syncStockFromServer(); // Sincronizar stock
-            } else {
-                console.error('syncStockFromServer method is not defined in the pos environment.');
+                } else {
+                    console.error('syncStockFromServer method is not defined in the pos environment.');
+                }
+                this.showNotification('Stock actualizado', 3000);
             }
-            this.showNotification('Stock actualizado', 3000);
+        
+            showNotification(message, duration) {
+                const notification = document.createElement('div');
+                notification.className = 'pos-notification';
+                notification.textContent = message;
+                document.body.appendChild(notification);
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, duration);
         }
     }
     StockSyncButton.template = 'StockSyncButton';

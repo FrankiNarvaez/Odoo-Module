@@ -6,7 +6,11 @@ odoo.define('quindicolor_pos_integration.PosStockSync', function (require) {
 
     class StockSyncButton extends PosComponent {
         async onClick() {
-            await this.env.pos.syncStockFromServer(); // Sincronizar stock
+            if (this.env.pos.syncStockFromServer) {
+                await this.env.pos.syncStockFromServer(); // Sincronizar stock
+            } else {
+                console.error('syncStockFromServer method is not defined in the pos environment.');
+            }
             this.showNotification('Stock actualizado', 3000);
         }
     }

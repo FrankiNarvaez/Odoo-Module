@@ -6,7 +6,9 @@ odoo.define('quindicolor_pos_integration.PosStockSync', function (require) {
 
     class StockSyncButton extends PosComponent {
         async onClick() {
-            await this.env.pos.syncStockFromServer(); // Sincronizar stock
+            const threshold = this.env.pos.config.available_stock_threshold; // Acceder al campo
+            console.log(`Umbral de stock: ${threshold}`);
+            await this.env.pos.syncStockFromServer();
             this.showNotification('Stock actualizado', 3000);
         }
     }
